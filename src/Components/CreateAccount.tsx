@@ -3,37 +3,45 @@ import axios from "axios"
 import { StyleSheet, css } from "aphrodite"
 import algo from "../images/algo.png"
 import { useState } from "react"
+import { Ellipsis } from "react-bootstrap/esm/PageItem"
 
 
 
 const styles = StyleSheet.create({
     container : {
-        width: '100%',
-        display : 'flex',
-        height : '100vh'
+        width: '50%',
+        // display : 'flex',
+        height : '100%',
+        position: 'fixed',
+        // zIndex: '1',
+        top: '0',
+        overflowX: 'hidden',
+        paddingTop: '20px'
     },
     title: {
         textAlign: 'center',
         padding: '24px',
         margin: '24px',
         color : '#0570EE',
-
-
     },
     left: {
         backgroundColor : '#0570EE',
-        width: '50%'
+        left: '0'
+
     },
     right: {
         justifyContent : 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        right: '0'
     },
     image: {
         top: '50%',
-        left: '50px',
+        left: '50%',
         // backgroundImage: `url(${algo})`,
-        height: '300px',
-        width: '300px'
+        display: 'block',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '50%',
     },
 
     input: {
@@ -56,9 +64,9 @@ const styles = StyleSheet.create({
 
     subtext:{
         lineHeight: '24px',
-        fontSize: '24px',
+        fontSize: '18px',
         textAlign: 'center',
-        margin: '24px'
+        margin: '24px',
     }, 
 
     subhead: {
@@ -82,7 +90,17 @@ const styles = StyleSheet.create({
 
     generate: {
         // display: 'none'
-    }
+    },
+
+    centered : {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)}',
+        textAlign: 'center',
+        margin: '24px',
+        padding: '16px'
+      }
 
 })
 
@@ -99,12 +117,10 @@ const styles = StyleSheet.create({
         try{
             let data = await axios.get("https://api-eu1.tatum.io/v3/algorand/wallet/" ,{
                 headers :{
+                    'content-type': 'text/json',
                    "x-api-key" : process.env.REACT_APP_TATUM_API_KEY!
                    
                },
-                // params : {
-                //   mnemonic : "budget before tourist jelly net roast rural coin cycle spirit unknown rough menu churn lecture swap spider gentle firm window long caught frost about regret"
-                // }
               })
               setAddress(data.data.address)
               setSecret(data.data.secret)
@@ -125,8 +141,8 @@ const styles = StyleSheet.create({
     try{
         let data = await axios.get(`https://api-eu1.tatum.io/v3/algorand/address/${input}` ,{
             headers :{
-                "content-type" : "application/json",
-               "x-api-key" : process.env.REACT_APP_TATUM_API_KEY!
+                'content-type': 'text/json',
+                "x-api-key" : process.env.REACT_APP_TATUM_API_KEY!
            },
           })
           console.log(data.data.address)
@@ -141,11 +157,15 @@ const styles = StyleSheet.create({
   }
 
      return(
-     <div className={css(styles.container)}>
-        <div className={css(styles.left)}>
-            <img className={css(styles.image)} src={algo} alt="algorand logo"/>
-        </div>
-        <div className={css(styles.right)}>
+         <div>
+            <div className={`${css(styles.container)} ${css(styles.left)}`} >
+            <div className={css(styles.centered)}>
+                    <img className={css(styles.image)} src={algo} alt="algorand logo"/>
+                </div>
+         </div>
+    
+
+        <div className={`${css(styles.container)} ${css(styles.right)}`}>
             <h1 className={css(styles.title)}>Tatum Algorand Wallet</h1>
             <input onChange = {onChange}  value= {input} className={css(styles.input)} type="text" placeholder="Enter your private key/ mnemonic phrase"/><br/><br/>
             <button onClick={(event: React.MouseEvent<HTMLElement>) => {validateLogin()}}
@@ -160,7 +180,9 @@ const styles = StyleSheet.create({
                 <p className={css(styles.subtext)}>{secret}</p>
             </div>
         </div>
-    </div>
+         </div>
+    
+    
     )
 
   }
