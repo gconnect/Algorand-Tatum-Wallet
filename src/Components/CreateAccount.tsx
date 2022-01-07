@@ -3,7 +3,7 @@ import axios from "axios"
 import { StyleSheet, css } from "aphrodite"
 import algo from "../images/algo.png"
 import { useState } from "react"
-import  * as dotenv from "dotenv"
+// import  * as dotenv from "dotenv"
 // import 'dotenv/config'
 // require('dotenv').config()
 
@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
         top: '50%',
         left: '50px',
         // backgroundImage: `url(${algo})`,
-        height: '50px',
-        width: '50px'
+        height: '300px',
+        width: '300px'
     },
 
     input: {
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         try{
             let data = await axios.get("https://api-eu1.tatum.io/v3/algorand/wallet/" ,{
                 headers :{
-                   "x-api-key" : "0008ec97-775b-47c1-9d41-df7ee9f04213"
+                   "x-api-key" : process.env.REACT_APP_TATUM_API_KEY!
                    
                },
                 // params : {
@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
     try{
         let data = await axios.get(`https://api-eu1.tatum.io/v3/algorand/address/${input}` ,{
             headers :{
-               "x-api-key" : "0008ec97-775b-47c1-9d41-df7ee9f04213"
+                "content-type" : "application/json",
+               "x-api-key" : process.env.REACT_APP_TATUM_API_KEY!
            },
           })
           console.log(data.data.address)
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
      return(
      <div className={css(styles.container)}>
         <div className={css(styles.left)}>
-            <img className={css(styles.image)} src="../images/algo.png" alt="algorand logo"/>
+            <img className={css(styles.image)} src={algo} alt="algorand logo"/>
         </div>
         <div className={css(styles.right)}>
             <h1 className={css(styles.title)}>Tatum Algorand Wallet</h1>
