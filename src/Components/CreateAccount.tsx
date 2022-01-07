@@ -3,12 +3,7 @@ import axios from "axios"
 import { StyleSheet, css } from "aphrodite"
 import algo from "../images/algo.png"
 import { useState } from "react"
-// import  * as dotenv from "dotenv"
-// import 'dotenv/config'
-// require('dotenv').config()
 
-// dotenv.config({ path: __dirname+'/.env' });
-// require('dotenv').config({ path: __dirname+'/.env' });
 
 
 const styles = StyleSheet.create({
