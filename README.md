@@ -1,6 +1,35 @@
-# Getting Started with Create React App
+# Algorand Tatum Wallet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Algorand Tatum Custodian Wallet enables seemless interaction with the Algorand blockchain. The wallet help you to manage your assets in one place and also sign transactions when connected to the wallet. 
+
+This project was developed using the Tatum API to interact with the Algorand Blockchain. To have access to the Tatum API you will need to register on their [website](https://tatum.io/) and get your API KEY.
+
+# Development Tools/Language/Library Used
+- Javascript
+- Typescript
+- React
+- Alphrodite for css
+
+## Demo/ Mockup
+Here is the link to the figma mockup [design](https://www.figma.com/file/qhuPvosg1Zbjv3ib2cdW4v/Tatum-Algorand-Wallet?node-id=0%3A1)
+
+# Features of the Wallet Accessible From Tatum API 
+Here is the link to Tatum Algorand API [documentation](https://tatum.io/apidoc.php#operation/AlgorandGenerateWallet)
+- Generate account without mnenomic phrase
+- Generate acctount with secret key
+- Send algo from account to account
+- Access account blance 
+- Get Algorand Transactions
+- Access algod node endpoints
+- Access Algorand indexer
+- Get Algorand latest block
+- Manage Assets and Multi-Sig Account
+
+# Todo
+- The application is still under development.
+
+# Future Plans
+- Implement all the above listed features and make it a fully functional web, mobile and chrome extension wallet and will also improve on the UI.
 
 ## Available Scripts
 
@@ -14,33 +43,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+## LICENSE
+Distributed under the MIT License. See for more information. [LICENSE](https://github.com/gconnect/Algorand-Tatum-Wallet/blob/master/LICENSE)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Blog and Video Tutorial
+Links to the blog post and demo video will be provided soon
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Disclaimer
+This project is not audited and should not be used in a production environment.
