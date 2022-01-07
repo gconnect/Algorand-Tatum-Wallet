@@ -1,6 +1,8 @@
 # Algorand Tatum Wallet
 
-The Algorand Tatum Custodian Wallet enables seemless interaction with the Algorand blockchain. The wallet help you to manage your assets in one place and also sign transactions when connected to the wallet. This project was developed using the Tatum API to interact with the Algorand Blockchain. To have access to the Tatum API you will need to register on their [website](https://tatum.io/) and get your API KEY.
+The Algorand Tatum Custodian Wallet enables seemless interaction with the Algorand blockchain. The wallet help you to manage your assets in one place and also sign transactions when connected to the wallet. 
+
+This project was developed using the Tatum API to interact with the Algorand Blockchain. To have access to the Tatum API you will need to register on their [website](https://tatum.io/) and get your API KEY.
 
 # Development Tools/Language/Library Used
 - Javascript
