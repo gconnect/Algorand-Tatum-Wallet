@@ -21,12 +21,13 @@ Here is the link to Tatum Algorand API [documentation](https://tatum.io/apidoc.p
 - Access algod node endpoints
 - Access Algorand indexer
 - Get Algorand latest block
+- Manage Assets and Multi-Sig Account
 
 # Todo
 - The application is still under development.
 
 # Future Plans
-- Implement all the above listed features and make it a fully functional web, mobile and chrome extension wallet
+- Implement all the above listed features and make it a fully functional web, mobile and chrome extension wallet and will also improve on the UI.
 
 ## Available Scripts
 
