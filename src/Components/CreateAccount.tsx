@@ -3,9 +3,8 @@ import axios from "axios"
 import { StyleSheet, css } from "aphrodite"
 import algo from "../images/algo.png"
 import { useState } from "react"
-import { Ellipsis } from "react-bootstrap/esm/PageItem"
-
-
+import { Redirect, Link } from "react-router-dom"
+import Alert from 'react-bootstrap/Alert';
 
 const styles = StyleSheet.create({
     container : {
@@ -85,7 +84,6 @@ const styles = StyleSheet.create({
         display: 'block',
         fontSize: '16px',
         textAlign: 'center',
-        fontWeight: 'bold',
     },
 
     generate: {
@@ -112,6 +110,7 @@ const styles = StyleSheet.create({
     const [address, setAddress] = useState('')
     const [secret, setSecret] = useState('')
     const [input, setInput] = useState('')
+    const [shouldRedirect, setShouldRedirect] = useState(false)
 
     const generateAccount = async () =>{
         try{
@@ -124,7 +123,6 @@ const styles = StyleSheet.create({
               })
               setAddress(data.data.address)
               setSecret(data.data.secret)
-
               console.log(data.data.address)
 
         }catch(err){
@@ -137,7 +135,8 @@ const styles = StyleSheet.create({
     console.log(input)
   };
 
-  const validateLogin  = async () =>{
+
+  const validateLogin  = async (e : React.MouseEvent<HTMLElement>) => {
     try{
         let data = await axios.get(`https://api-eu1.tatum.io/v3/algorand/address/${input}` ,{
             headers :{
@@ -146,17 +145,28 @@ const styles = StyleSheet.create({
            },
           })
           console.log(data.data.address)
-          if (data.status == 200){
-            console.log('correct go to dashboard')
-          }else{
+          if (data.status === 200){
+            sessionStorage.setItem('resData', JSON.stringify(data))
+            setShouldRedirect(true)
+            
+
+          }else if (data.status !== 404){
               console.log('incorrect secret')
+              alert("incorrect secret")
+              
           }
     }catch(err){
+        
+       return (
+        alert(err)
+       )
+      
         console.log(err)
     } 
   }
 
      return(
+        shouldRedirect ? <Redirect to="/dashboard"/>  : 
          <div>
             <div className={`${css(styles.container)} ${css(styles.left)}`} >
             <div className={css(styles.centered)}>
@@ -168,22 +178,24 @@ const styles = StyleSheet.create({
         <div className={`${css(styles.container)} ${css(styles.right)}`}>
             <h1 className={css(styles.title)}>Tatum Algorand Wallet</h1>
             <input onChange = {onChange}  value= {input} className={css(styles.input)} type="text" placeholder="Enter your private key/ mnemonic phrase"/><br/><br/>
-            <button onClick={(event: React.MouseEvent<HTMLElement>) => {validateLogin()}}
+            <button onClick={ (event: React.MouseEvent<HTMLElement>) => `${validateLogin(event)}`}
  className={css(styles.button)}>Login</button><br/>
-            <span className={css(styles.newAccount)}>Don't have a wallet?</span> 
+            <p className={css(styles.newAccount)}>Don't have a wallet?</p> 
             <span className={css(styles.create)} onClick={generateAccount}> Create new Wallet</span>
             <div className={css(styles.generate)}> 
                 <p className={css(styles.subtext)}>Copy and save your secret key, you will need it to have access to your account</p>
                 <p className={css(styles.subhead)}>Address</p>
                 <p className={css(styles.subtext)}>{address}</p>
-                <p className={css(styles.subhead)}>Secret Key</p>
+                <p className={css(styles.subhead)} >Secret Key</p>
                 <p className={css(styles.subtext)}>{secret}</p>
+                
+               
+
             </div>
-        </div>
+        </div>             
          </div>
     
     
     )
 
   }
-  

@@ -1,31 +1,23 @@
 import React from 'react';
 import './App.css';
 // import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import {render} from 'react-dom'
-import Dashboard from './Components/Dashboard';
 import CreateAccount from './Components/CreateAccount';
+import {Route,  BrowserRouter as Router, Redirect, Switch} from 'react-router-dom'
+import Dashboard from './Components/Dashboard';
 
-class App extends React.Component{
-
-  render(){
+const App = () => {
     return (
-      // <Router>
-      //   <div>
-      //     <nav>
-      //       <Link to="/">Home</Link>
-      //       <Link to="/foo">Foo</Link>
-      //       <Link to="/bar">Bar</Link>
-      //     </nav>
-      //     <Switch>
-      //       <Route exact path="/" component={CreateAccount} />
-      //       <Route exact path="/dashboard" component={Dashboard} />
-      //     </Switch>
-      //   </div>
-      // </Router>
-      <CreateAccount/>
+      <Router>
+      <div>
+          <Switch>
+              <Route exact path="/" component={CreateAccount} />
+              <Route exact  path="/dashboard" component={Dashboard} />
+              {/* <Route path="/404" component={NotFoundPage} /> */}
+              {/* <Redirect to="/404" /> */}
+          </Switch>
+      </div>
+  </Router>
     ); 
-  }
-
 }
 
 export default App;
