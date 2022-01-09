@@ -5,6 +5,9 @@ import algo from "../images/algo.png"
 import { useState } from "react"
 import { Redirect, Link } from "react-router-dom"
 import Alert from 'react-bootstrap/Alert';
+import CustomDialog from "./CustomDialog"
+import SuccessAlert from "./SuccessAlert"
+import { title } from "process"
 
 const styles = StyleSheet.create({
     container : {
@@ -111,6 +114,7 @@ const styles = StyleSheet.create({
     const [secret, setSecret] = useState('')
     const [input, setInput] = useState('')
     const [shouldRedirect, setShouldRedirect] = useState(false)
+    const [showAlert, setShouldShowAlert] = useState(false)
 
     const generateAccount = async () =>{
         try{
@@ -146,13 +150,16 @@ const styles = StyleSheet.create({
           })
           console.log(data.data.address)
           if (data.status === 200){
+            <SuccessAlert message ="Login succesful" title={'congrate'} hide={false} show= {showAlert}/> 
+
             sessionStorage.setItem('resData', JSON.stringify(data))
             setShouldRedirect(true)
-            
-
+            setShouldShowAlert(true)
           }else if (data.status !== 404){
+              setShouldShowAlert(true)
               console.log('incorrect secret')
-              alert("incorrect secret")
+            //   alert("incorrect secret")
+
               
           }
     }catch(err){
@@ -166,7 +173,8 @@ const styles = StyleSheet.create({
   }
 
      return(
-        shouldRedirect ? <Redirect to="/dashboard"/>  : 
+        shouldRedirect ?  
+        <Redirect to="/dashboard"/> :
          <div>
             <div className={`${css(styles.container)} ${css(styles.left)}`} >
             <div className={css(styles.centered)}>
@@ -176,10 +184,13 @@ const styles = StyleSheet.create({
     
 
         <div className={`${css(styles.container)} ${css(styles.right)}`}>
+        <SuccessAlert message ="Login succesful" title={'congrate'} hide={false} show= {showAlert}/> 
+
             <h1 className={css(styles.title)}>Tatum Algorand Wallet</h1>
             <input onChange = {onChange}  value= {input} className={css(styles.input)} type="text" placeholder="Enter your private key/ mnemonic phrase"/><br/><br/>
-            <button onClick={ (event: React.MouseEvent<HTMLElement>) => `${validateLogin(event)}`}
+            <button onClick={ (event: React.MouseEvent<HTMLElement>) => `${validateLogin(event)} ${setShouldShowAlert(true)} `}
  className={css(styles.button)}>Login</button><br/>
+
             <p className={css(styles.newAccount)}>Don't have a wallet?</p> 
             <span className={css(styles.create)} onClick={generateAccount}> Create new Wallet</span>
             <div className={css(styles.generate)}> 
@@ -188,9 +199,6 @@ const styles = StyleSheet.create({
                 <p className={css(styles.subtext)}>{address}</p>
                 <p className={css(styles.subhead)} >Secret Key</p>
                 <p className={css(styles.subtext)}>{secret}</p>
-                
-               
-
             </div>
         </div>             
          </div>

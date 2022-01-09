@@ -7,23 +7,21 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import { StyleSheet, css } from "aphrodite"
+import DashboardLayout from "./layout"
 
 library.add(fab, faCheckSquare, faCoffee)
 
+const styles = StyleSheet.create({
+    button: {
+        width: '500px'
+    }
+})
+
 export default function Dashboard () {
     return(
-        <Container>  
-            <Row>
-            <Col>
-                <h1>Welcome to the dashboard</h1>  
-                <FontAwesomeIcon icon={['fab', 'discord']} size="lg" color="red"/>
-                <Button variant="success" className="mx-5">Bootstrap button</Button>
-            </Col>       
-            <Col>
-            right
-            </Col> 
-            </Row> 
-           
-        </Container>
+        <div>
+            <DashboardLayout/>
+        </div>
     )
 }

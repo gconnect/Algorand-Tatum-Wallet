@@ -1,3 +1,8 @@
+/* @font-face {
+  font-family: 'Mattone';
+  src: local('Mattone'), url(./fonts/Mattone-Regular.otf) format('truetype');
+} */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
