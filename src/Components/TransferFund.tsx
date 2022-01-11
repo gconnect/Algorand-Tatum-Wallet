@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react"
+import TransactionTable from "./TransactionTable"
+import { useState, useEffect } from "react"
+import axios from "axios"
 import { Constants } from "../constants";
-import Spinner from "react-bootstrap/Spinner"
+import { Spinner,  } from "react-bootstrap/";
+import  Table from "react-bootstrap/Table";
 
-export default function ApiService () {
 
+
+export default function TransferFund(){
   const [loading, setLoading] = useState(false)
   const address = localStorage.getItem("address")
   const privateKey = localStorage.getItem("secret")
 
+  
 const postTransaction = async () =>{
 
   try{
@@ -43,9 +48,8 @@ const postTransaction = async () =>{
     postTransaction()  
  }, [])
 
- return(
-   <div>
-      API TESTING HERE
-   </div> 
- )
+   return <div>
+     Transfer
+     </div>
+
 }
