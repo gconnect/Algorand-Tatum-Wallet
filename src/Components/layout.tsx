@@ -12,6 +12,7 @@ import Header from "./header";
 import { useState } from "react";
 import CustomDialog from "./CustomDialog";
 import Transfer from "./transfer";
+import Transactions from "./transactions";
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -55,7 +56,7 @@ export default function DashboardLayout() {
   const handleReceiveShow = (e: React.MouseEvent<HTMLElement> ) =>{
     setReceiveOpenDialog(true)   
 }
-  
+ 
     return(
         <div className={css(styles.wrapper)}>
           <Row>
@@ -73,7 +74,7 @@ export default function DashboardLayout() {
                       </Col>
                       </Row>
                       <Row>
-                          <Col><TransactionTable/></Col>
+                          <Col><Transactions/></Col>
                       </Row>
               </Col>
           </Row>

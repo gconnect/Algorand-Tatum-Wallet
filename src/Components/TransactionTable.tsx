@@ -1,49 +1,30 @@
 import React from "react";
 import Table from 'react-bootstrap/Table'
 
-export default function TransactionTable(){
+interface TransactionInterface{
+  txId: String,
+  round: number,
+  sender: String,
+  receiver?: String,
+  amount?: number
+  txType: String,
+  fee: number,
+}
+
+export default function TransactionTable(params: TransactionInterface){
   return(
     <div>
         <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>TxID</th>
-              <th>Block</th>
-              <th>Age</th>
-              <th>Amount</th>
-              <th>From</th>
-              <th>To</th>
-              <th>Type</th>
-            </tr>
-          </thead>
+      
           <tbody>
             <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>@fat</td>
-              <td>@fat</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              {/* <td colSpan={2}>Larry the Bird</td> */}
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
+              <td>{params.txId}</td>
+              <td>{params.round}</td>
+              <td>{params.sender}</td>
+              <td>{params.receiver}</td>
+              <td>{params.amount}</td>
+              <td>{params.txType}</td>
+              <td>{params.fee}</td>
             </tr>
           </tbody>
       </Table>

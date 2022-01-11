@@ -127,6 +127,12 @@ const styles = StyleSheet.create({
               })
               setAddress(data.data.address)
               setSecret(data.data.secret)
+
+              localStorage.setItem("secret", JSON.stringify(data.data.secret) )
+              localStorage.setItem("address", data.data.address)
+            //   localStorage.clear()
+              sessionStorage.setItem('resData', JSON.stringify(data.data.address))
+
               console.log(data.data.address)
 
         }catch(err){
@@ -153,6 +159,9 @@ const styles = StyleSheet.create({
             <SuccessAlert message ="Login succesful" title={'congrate'} hide={false} show= {showAlert}/> 
 
             sessionStorage.setItem('resData', JSON.stringify(data))
+            localStorage.setItem("secret1", JSON.stringify(input) )
+            localStorage.setItem("address1", JSON.stringify(data) )
+
             setShouldRedirect(true)
             setShouldShowAlert(true)
           }else if (data.status !== 404){
@@ -167,14 +176,12 @@ const styles = StyleSheet.create({
        return (
         alert(err)
        )
-      
-        console.log(err)
     } 
   }
 
      return(
         shouldRedirect ?  
-        <Redirect to="/dashboard"/> :
+        <Redirect to="/dashboard" /> :
          <div>
             <div className={`${css(styles.container)} ${css(styles.left)}`} >
             <div className={css(styles.centered)}>
