@@ -10,7 +10,7 @@ interface ModalInterface{
   modalTitle : String,
   buttonText: String,
   buttonVisible : boolean,
-  QrcodeVisible : boolean
+  qrcodeVisible : boolean
 
 }
 export default function CustomDialog(params: ModalInterface) {
@@ -32,7 +32,7 @@ export default function CustomDialog(params: ModalInterface) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-       <CustomForm buttonText={params.buttonText} buttonVisibility={params.buttonVisible} QrcodeVisible={params.QrcodeVisible}/>
+       <CustomForm buttonText={params.buttonText} buttonVisibility={params.buttonVisible} qrcodeVisible={params.qrcodeVisible}/>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={handleShow}>Close</Button>

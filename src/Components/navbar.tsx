@@ -47,8 +47,6 @@ export default function NavBar(){
             <NavLink className={css(styles.navItem)} to="/">Wallet</NavLink>
             <NavLink className={css(styles.navItem)} to="/">Add Wallet</NavLink>
             <NavLink className={css(styles.navItem)} to="/">Asset Management</NavLink>
-            <NavLink className={css(styles.navItem)} to="/">Create Multi-Sig Account</NavLink>
-            <NavLink className={css(styles.navItem)} to="/">Import MultiSig Account</NavLink>
             <NavLink className={css(styles.navItem)} to="/">Address Book</NavLink>
             <NavLink className={css(styles.navItem)} to="/">Logout</NavLink>
             </Col>

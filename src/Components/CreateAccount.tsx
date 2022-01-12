@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
         try{
             let data = await axios.get("https://api-eu1.tatum.io/v3/algorand/wallet/" ,{
                 headers :{
-                    'content-type': 'text/json',
+                    'content-type': 'application/json',
                    "x-api-key" : process.env.REACT_APP_TATUM_API_KEY!
                    
                },
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
               setAddress(data.data.address)
               setSecret(data.data.secret)
 
-              localStorage.setItem("secret", JSON.stringify(data.data.secret) )
+              localStorage.setItem("secret", data.data.secret)
               localStorage.setItem("address", data.data.address)
             //   localStorage.clear()
               sessionStorage.setItem('resData', JSON.stringify(data.data.address))
@@ -150,24 +150,22 @@ const styles = StyleSheet.create({
     try{
         let data = await axios.get(`https://api-eu1.tatum.io/v3/algorand/address/${input}` ,{
             headers :{
-                'content-type': 'text/json',
+                'content-type': 'application/json',
                 "x-api-key" : process.env.REACT_APP_TATUM_API_KEY!
            },
           })
           console.log(data.data.address)
           if (data.status === 200){
-            <SuccessAlert message ="Login succesful" title={'congrate'} hide={false} show= {showAlert}/> 
-
+            // alert("Login successful")
             sessionStorage.setItem('resData', JSON.stringify(data))
-            localStorage.setItem("secret1", JSON.stringify(input) )
-            localStorage.setItem("address1", JSON.stringify(data) )
+            localStorage.setItem("secret1", input)
+            localStorage.setItem("address1", data.data.address )
 
             setShouldRedirect(true)
             setShouldShowAlert(true)
           }else if (data.status !== 404){
-              setShouldShowAlert(true)
               console.log('incorrect secret')
-            //   alert("incorrect secret")
+              alert("incorrect secret")
 
               
           }

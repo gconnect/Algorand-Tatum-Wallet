@@ -67,10 +67,12 @@ export default function DashboardLayout() {
                       <Col className={css(styles.title)} xs={8}>Transactions</Col>
                       <Col>
                       <Button onClick={(e:React.MouseEvent<HTMLElement>) => handleShow(e)}  className={css(styles.sendbtn)}>Transfer</Button> 
-                      <CustomDialog show={openDialog} hide={false} modalTitle={"Transfer"} buttonText={"Transfer"} buttonVisible={false} QrcodeVisible={true}/>
+                      <CustomDialog show={openDialog} hide={false} modalTitle={"Transfer"} buttonText={"Transfer"} buttonVisible={false} qrcodeVisible={true}/>
                       
-                      <Button onClick={(e:React.MouseEvent<HTMLElement>) => handleReceiveShow(e)} className={css(styles.receivebtn)}>Receive</Button>
-                      <CustomDialog show={openReceiveDialog} hide={false} modalTitle={"Receive"} buttonText={"Receive"} buttonVisible={true} QrcodeVisible={false}/>
+                      <a href="https://dispenser.testnet.aws.algodev.network/" target='blank'>
+                      <Button>Receive</Button>
+                      </a>
+                      <CustomDialog show={openReceiveDialog} hide={false} modalTitle={"Receive"} buttonText={"Receive"} buttonVisible={true} qrcodeVisible={false}/>
                       </Col>
                       </Row>
                       <Row>
